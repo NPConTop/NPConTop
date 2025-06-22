@@ -20,16 +20,16 @@ if not _G.Settings then
             RemoveClouds = true
         },
         Optimizations = {
-            RemoveClothing = true,
-            RemoveAccessories = true,
-            RemoveParticles = true,
-            RemoveEffects = true,
-            RemoveTextures = true,
+            RemoveClothing = false,
+            RemoveAccessories = false,
+            RemoveParticles = false,
+            RemoveEffects = false,
+            RemoveTextures = false,
             RemoveMeshes = false,
-            RemoveExplosions = true,
-            RemovePostEffects = true,
-            RemoveLights = true,
-            RemoveDecals = true
+            RemoveExplosions = false,
+            RemovePostEffects = false,
+            RemoveLights = false,
+            RemoveDecals = false
         },
         Notifications = true
     }

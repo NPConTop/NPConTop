@@ -9,8 +9,8 @@ local Terrain = workspace:FindFirstChildOfClass("Terrain")
 if not _G.Settings then
     _G.Settings = {
         Graphics = {
-            FPS = 1, -- ⚠️ FPS 1: Gerakan super lambat
-            QualityLevel = 1,
+            FPS = 240, -- ⚠️ 
+            QualityLevel = 5,
             MeshPartDetail = 1,
             WaterQuality = 0,
             ShadowQuality = 0,
@@ -22,14 +22,14 @@ if not _G.Settings then
         Optimizations = {
             RemoveClothing = false,
             RemoveAccessories = false,
-            RemoveParticles = false,
-            RemoveEffects = false,
+            RemoveParticles = trur,
+            RemoveEffects = true,
             RemoveTextures = false,
             RemoveMeshes = false,
-            RemoveExplosions = false,
-            RemovePostEffects = false,
-            RemoveLights = false,
-            RemoveDecals = false
+            RemoveExplosions = true,
+            RemovePostEffects = true,
+            RemoveLights = true,
+            RemoveDecals = true
         },
         Notifications = true
     }
@@ -48,7 +48,7 @@ local function showNotification(title, text, duration)
 end
 
 local function optimizeGraphics()
-    showNotification("FPS Booster", "Menerapkan mode FPS 1...", 2)
+    showNotification("FPS Booster", "Menerapkan mode FPS FAST BOOSTER...", 2)
     task.wait(0.5)
 
     local success, err = pcall(function()
@@ -109,7 +109,7 @@ local function optimizeInstance(instance)
     if opt.RemoveClothing and (instance:IsA("Clothing") or instance:IsA("SurfaceAppearance")) then
         instance:Destroy()
     elseif opt.RemoveParticles and (instance:IsA("ParticleEmitter") or instance:IsA("Trail") or instance:IsA("Smoke") or instance:IsA("Fire") or instance:IsA("Sparkles")) then
-        instance.Enabled = false
+        instance.Enabled = true
     elseif opt.RemoveTextures and instance:IsA("Texture") then
         instance.Transparency = 1
     elseif opt.RemoveMeshes and instance:IsA("SpecialMesh") then

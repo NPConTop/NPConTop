@@ -10,22 +10,22 @@ if not _G.Settings then
     _G.Settings = {
         Graphics = {
             FPS = 240, -- ⚠️ 
-            QualityLevel = 5,
+            QualityLevel = 0,
             MeshPartDetail = 1,
-            WaterQuality = 0,
-            ShadowQuality = 0,
-            MaterialQuality = 0,
+            WaterQuality = 1,
+            ShadowQuality = 1,
+            MaterialQuality = 1,
             RemoveSky = true,
             RemoveAtmosphere = true,
             RemoveClouds = true
         },
         Optimizations = {
             RemoveClothing = false,
-            RemoveAccessories = false,
-            RemoveParticles = trur,
+            RemoveAccessories = true,
+            RemoveParticles = true,
             RemoveEffects = true,
-            RemoveTextures = false,
-            RemoveMeshes = false,
+            RemoveTextures = true,
+            RemoveMeshes = true,
             RemoveExplosions = true,
             RemovePostEffects = true,
             RemoveLights = true,
@@ -42,7 +42,7 @@ local function showNotification(title, text, duration)
             Title = title,
             Text = text,
             Duration = duration or 5,
-            Button1 = "Okay"
+            Button1 = "❌"
         })
     end)
 end
@@ -117,7 +117,7 @@ local function optimizeInstance(instance)
     elseif opt.RemoveExplosions and instance:IsA("Explosion") then
         instance.BlastPressure = 1
         instance.BlastRadius = 1
-        instance.Visible = false
+        instance.Visible = true
     elseif opt.RemovePostEffects and instance:IsA("PostEffect") then
         instance.Enabled = false
     elseif opt.RemoveLights and (instance:IsA("SpotLight") or instance:IsA("PointLight") or instance:IsA("SurfaceLight")) then
@@ -135,7 +135,7 @@ local function optimizeInstance(instance)
 end
 
 local function initialize()
-    showNotification("FPS Booster", "FPS 1 MODE AKTIF BY NPC", math.huge)
+    showNotification("FPS Booster", "FPS BOOSTER MODE AKTIF BY NPC", math.huge)
     task.wait(2)
 
     local success, err = pcall(function()
@@ -150,14 +150,14 @@ local function initialize()
         game.DescendantAdded:Connect(optimizeInstance)
         task.wait(0.5)
 
-        showNotification("FPS Booster", "FPS DISETEL KE 1!", 2)
+        showNotification("FPS Booster", "FPS DISETEL KE 240!", 2)
         task.wait(2)
 
-        showNotification("FPS Booster", "FPS BOOSTED TO 1 BY NPC", math.huge)
+        showNotification("FPS Booster", "FPS BOOSTED TO SUPER BY NPC", math.huge)
     end)
 
     if not success then
-        showNotification("FPS Booster", "Gagal: " .. tostring(err), 5)
+        showNotification("FPS Booster", "awokawok gagal: " .. tostring(err), 5)
     end
 end
 
